@@ -48,7 +48,8 @@ public class TicketsMapService implements TicketsService {
 
   @Override
   public Ticket modify(Ticket ticket) {
-    return persistence.replace(ticket.getId(), ticket);
+    persistence.replace(ticket.getId(), ticket);
+    return get(ticket.getId());
   }
 
   @Override
@@ -59,6 +60,9 @@ public class TicketsMapService implements TicketsService {
         .closedAs(resolution)
         .closingDate(LocalDateTime.now())
         .build();
+    if (ticket.getClosedAs().equals(Resolution.SOLVED) && !ticket.getSolution().isPresent()) {
+      throw new IllegalStateException("Si el ticket se cierra SOLVED debe tener una solución asignada");
+    }
     return modify(ticket);
   }
 

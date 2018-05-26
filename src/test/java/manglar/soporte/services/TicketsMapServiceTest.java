@@ -1,7 +1,5 @@
 package manglar.soporte.services;
 
-//import static org.junit.jupiter.api.Assertions.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -26,35 +24,35 @@ class TicketsMapServiceTest {
   void setup() {
     service = new TicketsMapService();
     service.report(new TicketValue(
-        1L,
-        "Error en Java",
-        TicketStatus.OPEN,
-        null,
-        null,
-        LocalDateTime.now(),
-        null
+            1L,
+            "Error en Java",
+            TicketStatus.OPEN,
+            null,
+            null,
+            LocalDateTime.now(),
+            null
     ));
     service.report(new TicketValue(
-        2L,
-        "Error en Java 2",
-        TicketStatus.OPEN,
-        null,
-        null,
-        LocalDateTime.now(),
-        null
+            2L,
+            "Error en Java 2",
+            TicketStatus.OPEN,
+            null,
+            null,
+            LocalDateTime.now(),
+            null
     ));
   }
 
   @Test
   void report() {
     service.report(new TicketValue(
-        3L,
-        "Error en Java 3",
-        TicketStatus.OPEN,
-        null,
-        null,
-        LocalDateTime.now(),
-        null
+            3L,
+            "Error en Java 3",
+            TicketStatus.OPEN,
+            null,
+            null,
+            LocalDateTime.now(),
+            null
     ));
 
     assertEquals(3, service.all().size());
@@ -102,10 +100,10 @@ class TicketsMapServiceTest {
     Ticket ticket = service.get(1L);
 
     Ticket out = service.modify(
-        TicketValue.from(ticket)
-            .toBuilder()
-            .subject("SUBJECT UPDATED")
-            .build()
+            TicketValue.from(ticket)
+                    .toBuilder()
+                    .subject("SUBJECT UPDATED")
+                    .build()
     );
 
     assertEquals("SUBJECT UPDATED", out.getSubject());

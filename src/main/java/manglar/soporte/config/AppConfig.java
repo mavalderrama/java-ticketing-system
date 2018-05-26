@@ -15,6 +15,12 @@ public class AppConfig {
         return new TicketsDAOService(ticketsDAO());
     }
 
+    //This is optional because it receives the dependency as a parameter
+    /*@Bean
+    public TicketsService ticketsService(TicketDAO ticket){
+        return new TicketsDAOService(ticket);
+    }*/
+
     @Bean
     public TicketDAO ticketsDAO(){
         return new TicketMemoryDAO();

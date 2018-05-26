@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    //This configuration uses the ticketsDAO Bean as a dependency for the service
     @Bean
     public TicketsService ticketsService(){
         return new TicketsDAOService(ticketsDAO());
@@ -21,6 +22,7 @@ public class AppConfig {
         return new TicketsDAOService(ticket);
     }*/
 
+    //This method configures a Bean to be used by ticketService as a dependency
     @Bean
     public TicketDAO ticketsDAO(){
         return new TicketMemoryDAO();
